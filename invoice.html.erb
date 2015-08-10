@@ -1,0 +1,295 @@
+<DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+      <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+      <link rel="stylesheet" type="text/css" href="invoice.css" />
+       
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            <title>Sky Invoive generated </title>
+            
+            <style type="text/css">
+                html { height: 100%; width: 100%;}
+               .invoice {float:right;font-family:sans-serif;font-weight: bold; color:#707070;display:list-item;}
+               .main_date { float:right;font-family:sans-serif;font-weight: bold; color:#707070; }
+  			   .package  { width: 900px; margin: 0; padding: 0; background: #0066FF;color:white;font-family:sans-serif;text-align: center;float: right;font-weight: bold;padding-top:10px;} 
+  			   .headers_pack { width: 900px; margin: 0; padding: 0; background: #CCFFFF;color:black;font-family:sans-serif;text-align: center;}
+  			   .subcriptions {width: 900px; margin: 0; padding: 0; background: #FF6699;color:white;font-family:sans-serif;float: right; text-align:right; font-weight: bold;} 
+  			   .table  .th {  border-spacing: 10px; border-collapse: separate }
+  			   .td {td colspan:100%;}
+  			   .first_table { float:right;display:inline-block;	}	
+  			   .call_charges {width: 900px; margin: 0; padding: 0; background: #FF6699;color:white;font-family:sans-serif;float: right; text-align:right; font-weight: bold;}
+  			   .second_table { float:right;display:inline-block;}
+  			   .rentals {width: 900px; margin: 0; padding: 0; background: #FF6699;color:white;font-family:sans-serif;float: right; font-weight: bold;text-align:right;}
+  			   .sky_store {width: 900px; margin: 0; padding: 0; background: #0066FF;color:white;font-family:sans-serif;text-align: center;float: right;font-weight: bold;}
+  			   .buy_keep {width: 900px; margin: 0; padding: 0; background: #FF6699;color:white;font-family:sans-serif;float: right; text-align:right; font-weight: bold;}
+  			   .third_table  { float:right;display:inline-block;}
+  			   .forth_table  { float:right;display:inline-block;}
+  			   .bank_details { width:300px;float:left;display:inline-block;border:1px solid #0066FF;margin-left: 250px; }
+  			   .contact_details { width:300px;float:right;display:inline-block;border:1px solid #0066FF; margin-right: 20px;}
+  			</style>         
+            <p></p>          
+        </head>
+        
+        <body width="100%">     
+              <div style="margin-left: 100px;"><img src="image_logo/logo.png" /> <div id="main_date" class="main_date"><%= @generated %></div></div>
+              <br>
+             
+              <div class="invoice">Invoice#001</div>
+            
+              <div id="bank_details" class="bank_details">
+			  <table cellspacing="10">
+	           
+	            <tr bgcolor="#0066FF"> 
+				   <th>
+				    Sky Corporate
+				   </th>
+				 </tr>
+	           
+	  		    <tbody>
+	    		   <tr>    
+	    		  	<td>Sky Plc </td>
+	     		  </tr> 
+	     		   <tr>    
+	    		  	<td>Grant Way</td>
+	     		  </tr> 	  
+	     		   <tr>    
+	    		  	<td>Isleworth</td>
+	     		  </tr> 	 	  
+	     		   <tr>    
+	    		  	<td>TW7 5QD</td>
+	     		  </tr> 
+	     		  <tr>	 
+	     		    <td>UK</td>
+	     		  </tr> 		  
+	  		    </tbody>
+			  </table>
+		     </div> 
+		     <br>
+		     <div id="contact_details" class="contact_details">
+			  <table cellspacing="10">
+	           
+	            <tr> 
+				   <th bgcolor="#0066FF">
+				    Statement
+				   </th>
+				 </tr>
+	           
+	  		    <tbody>
+	    		   <tr>    
+	    		  	<td>Due: <%=@due%></td>
+	     		  </tr> 
+	     		   <tr>    
+	    		  	<td>From:&nbsp;<%=@from%>&nbsp;To&nbsp;<%=@to%></td>
+	     		  </tr> 	  
+	     		  
+	  		    </tbody>
+			  </table>
+		     </div>
+		            
+             <div class="package">Package</div>
+            
+             <div class="subcriptions">Subcriptions</div>
+             <br>
+            <div id="first_table" class="first_table"> 
+			<table cellspacing="30">
+			 <tr> 
+			   <th>
+			     Type
+			   </th>
+			   <th>
+			    Name
+			   </th>
+			   <th>
+			    Cost
+			   </th>
+			 </tr>
+  		    <tbody align="right">
+    	   
+    		  <% @package_header.each do |pair| %>
+    		   <tr>
+    		    <% pair.each_pair do |k,v| %>
+    		       <td><%= v %></td> 
+    		    <% end %>
+     		    
+     		  <% end %>
+     		  </tr>     		
+     		  <tr> <td style="font-weight: bold;"> Total </td> <td> &nbsp; </td><td><%= @total_package_value %></td>  </tr> 		    
+  		    </tbody>
+		  </table>
+		  </div>
+		       
+            <div id="call_charges" class="call_charges">Call Charge</div>    
+           
+           <div id="second_table" class="second_table">
+           <table cellspacing="30" >
+             <tr> 
+			   <th>
+			     Called
+			   </th>
+			   <th>
+			    Duration
+			   </th>
+			   <th>
+			    Cost
+			   </th>
+			 </tr>
+           
+  		    <tbody>
+    	   
+    		  <% @call_charges.each do |pair| %>
+    		   <tr>
+    		    <% pair.each_pair do |k,v| %>
+    		      <td><%= v %></td> 
+    		    <% end %>
+     		    
+     		  <% end %>
+     		  </tr> 
+     		  <tr> <td style="font-weight: bold;"> Total </td> <td> &nbsp; </td><td><%= @total_call_charge %></td>  </tr>  
+     		  	  
+  		    </tbody>
+		  </table> 
+		  </div>  
+                   
+          <div id="sky_store" class="sky_store">Sky Store</div>
+          <div id="sky_store" class="rentals">Rentals</div>
+          
+          <div id="third_table" class="third_table">
+           <table cellspacing="30">
+           <tr> 
+			    <th>
+			     
+			    </th>
+			     <th>
+			     Title
+			    </th>
+			   <th>
+			    
+			   </th>		  
+			   <th>
+			    Cost
+			   </th>
+			 </tr>
+                 
+  		    <tbody>
+    	   
+    		  <% @sky_store_rentals.each do |pair| %>
+    		   <tr>
+    		    <% pair.each_pair do |k,v| %>
+    		      <td></td><td><%= v %></td>
+    		    <% end %>
+     		    
+     		  <% end %>
+     		  </tr> 	  
+  		    </tbody>
+  		 
+		  </table>
+		  </div> 
+        
+		  
+          <div id="sky_store" class="buy_keep">Buy and Keep</div>
+           
+           <div id="forth_table" class="forth_table">
+           <table cellspacing="30">
+           
+            <tr> 
+			   <th>
+			     Title
+			   </th>
+			  
+			   <th>
+			    Cost
+			   </th>
+			 </tr>
+           
+  		    <tbody>
+    	   
+    		  <% @sky_store_buykeep.each do |pair| %>
+    		   <tr>
+    		    <% pair.each_pair do |k,v| %>
+    		       <td><%= v %></td> 
+    		    <% end %>
+     		    
+     		  <% end %>
+     		  </tr> 
+     		 
+     		 <tr> <td style="font-weight: bold;"> Total </td> <td><%= @sky_store_total %></td>  </tr> 
+  		    </tbody>
+		  </table>
+		  <p width:"900px"><hr style="height:1px;border:none;color:#333;background-color:#333;" /></hr></p>
+		 
+		   <table>
+		     <tr bgcolor="#707070"> 
+			   <th>
+			    Sub Total:
+			   </th>
+			 </tr>
+           
+  		    <tbody>
+    		   <tr>    
+    		  	<td>TAX:</td><td>N/A</td>
+     		  </tr> 
+     		   <tr>    
+    		  	<td style="color:#707070 !Important; font-weight:bold;">TOTAL:</td><td style="font-weight:bold;"><%= @total_val  %>&nbsp;GBP</td>
+     		  </tr> 
+		   </table>
+		 	 
+		  </div>
+		   
+		  <div id="sky_store" class="sky_store"></div>
+		  <div id="bank_details" class="bank_details">
+		  <table cellspacing="10">
+           
+            <tr bgcolor="#0066FF"> 
+			   <th>
+			    Bank Details
+			   </th>
+			 </tr>
+           
+  		    <tbody>
+    		   <tr>    
+    		  	<td>Your Name</td>
+     		  </tr> 
+     		   <tr>    
+    		  	<td>Bank Name</td>
+     		  </tr> 	  
+     		   <tr>    
+    		  	<td>SWIFT : -------</td>
+     		  </tr> 	 	  
+     		   <tr>    
+    		  	<td>Account Number : 12345678</td>
+     		  </tr> 
+     		  <tr>	 
+     		    <td>IBAN : ------</td>
+     		  </tr> 		  
+  		    </tbody>
+		  </table>
+		  </div>
+          
+          <div id="contact_details" class="contact_details">
+		  <table cellspacing="10">
+           
+            <tr> 
+			   <th bgcolor="#0066FF">
+			    Contact Details
+			   </th>
+			 </tr>
+           
+  		    <tbody>
+    		   <tr>    
+    		  	<td>Name</td>
+     		  </tr> 
+     		   <tr>    
+    		  	<td>Email</td>
+     		  </tr> 	  
+     		   <tr>    
+    		  	<td>Mobile: -------</td>
+     		  </tr> 
+     		  <tr>
+     		    <td style="color:#707070 !Important; font-weight:bold;">payment should be made by Bank Transfer</td>	 	  
+     		  </tr>	  
+  		    </tbody>
+		  </table>
+		  </div>
+                    
+       </body>     
+        </html>
